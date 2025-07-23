@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description"
+        content="Clarity Cards are gentle mood cards to help express emotions when words are hard. Create, flip, and share your feelings with ease.">
+    <title>Clarity Cards-Speak Without Words</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="icon" type="image/png" href="Clarity.png">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+        rel="stylesheet">
+</head>
+<!-- https://www.figma.com/design/XAP0fuMPq3qhxZa2iUx0O4/Clarity-Cards?node-id=0-1&p=f&t=MmjvJVdpn5kwGWa7-0 -->
+<body>
+    <button class="toggle-theme" onclick="toggleTheme()">🌙</button>
+    <header>
+        <h2>Clarity Cards are gentle mood cards for those moments when speaking feels impossible. Whether you're feeling
+            anxious,numb,overwhelmed or just need someone to know -"Let a card speak for you, create your own, or flip
+            an existing one that fits your mood."</h2>
+
+        <h1>Select Your Mood</h1>
+        <section>
+            <div class="mood-grid">
+                <button class="mood-button muted" aria-label="Can't Speak">😶Can't Speak</button>
+                <button class="mood-button anxious" aria-label="Anxious">😔Anxious</button>
+                <button class="mood-button grateful" aria-label="Thankful">🥹Thankful</button>
+                <button class="mood-button lazy" aria-label="Lazy">😪Lazy</button>
+                <button class="mood-button calm" aria-label="Calm">🧘‍♀️Calm</button>
+                <button class="mood-button help" aria-label="Need Help">😥Need Help</button>
+
+            </div>
+            <h2>Some Clarity Cards</h2>
+            <div class="cards-grid">
+                <div class="card card-muted">
+                    <div class="card-inner">
+                        <div class="card-front">
+                            Feeling Overwhelmed 🫣?
+                        </div>
+                        <div class="card-back">
+                            "" Breathe deeply. You are safe. This moment will pass💜"
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card card-anxious">
+                    <div class="card-inner">
+                        <div class="card-front">
+                            Feeling Heavy Thoughts 🌧️?
+                        </div>
+                        <div class="card-back">
+                            "It's okay to rest. Let go, one breathe at a time💙"
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card card-grateful">
+                    <div class="card-inner">
+                        <div class="card-front">
+                            Feeling Grateful 🙏?
+                        </div>
+                        <div class="card-back">
+                            "" Write 3 things you're thankful for today 💛"
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card card-lazy">
+                    <div class="card-inner">
+                        <div class="card-front">
+                            Feeling Lazy 😴?
+                        </div>
+                        <div class="card-back">
+                            "" Just stretch for 2 minutes and hydrate yourself🚰"
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card card-calm">
+                    <div class="card-inner">
+                        <div class="card-front">
+                            Feeling Happy 😄?
+                        </div>
+                        <div class="card-back">
+                            "Enjoy your happiness and treat youself to something sweets😋"
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card card-help">
+                    <div class="card-inner">
+                        <div class="card-front">
+                            Feeling Call Someone📞?
+                        </div>
+                        <div class="card-back">
+                            "" Reach out for a friend or loved one. You are not alone💚"
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <section>
+                <h1> Make Your Own Clarity Cards💫</h1>
+
+                <div class="input-section">
+                    <label for="username">Your Name (optional):</label>
+                    <input id="username" type="text" placeholder="Your Name" />
+                    <label for="age">Your Age (optional):</label>
+                    <input id="age" type="number" placeholder="Your Age" />
+                    <label for="front">What's on your mind? (Front):</label>
+                    <textarea id="front" rows="2" placeholder="What's on your mind?(Front)"></textarea>
+                    <label for="back"> How do you feel about it? (Back):</label>
+                    <textarea id="back" rows="2" placeholder="How do you feel about it? (Back)"></textarea>
+                    <button onclick="addCard()">Add Card 💌</button>
+                </div>
+
+                <div class="card-container" id="cardSection" aria-live="polite" style="display:none;"
+                    onclick="flipCard()">
+                    <div class="card" id="flipCard">
+                        <div class="card-face front">
+                            <h3 id="cardNameAge"></h3>
+                            <p><strong>Thought:</strong> <span id="cardFront"></span></p>
+                        </div>
+                        <div class="card-face back">
+                            <h3>Reflection</h3>
+                            <p id="cardBack"></p>
+                            <div class="actions">
+                                <button class="save-btn">⭐ Save</button>
+                                <button class="share-btn">🔗 Share</button>
+                                <button class="delete-btn">🗑️ Delete</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+    </header>
+    <blockquote class="quote">" Sometimes silence is the loudest cry for help❤️."</blockquote>
+    <section class="resources">
+        <h3>📙 Mental Health Support</h3>
+
+        <li>📞<a href="https://icallhelpline.org" target="_blank">iCall- Free mental health helpline by TISS</a></li>
+        <li>🤝<a href="https://yourdost.com" target="_blank">YourDost- Online counselling for Youth</a></li>
+
+    </section>
+    <footer>
+        <p>🩷 Built with Empathy, Powered by Design</p>
+        <p>@ 2025 Clarity Cards. All rights reserved</p>
+    </footer>
+    <!-- Popup Modal -->
+    <div id="popupModal" class="popup hidden">
+        <div class="popup-content">
+            <span id="popupClose" class="close">&times;</span>
+            <p id="popupMessage"></p>
+        </div>
+    </div>
+
+
+</body>
+<script src="script.js"></script>
+
+</html>

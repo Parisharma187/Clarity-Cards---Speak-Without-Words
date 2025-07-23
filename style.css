@@ -1,0 +1,426 @@
+/* Base Reset */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    font-size: 16px;
+    scroll-behavior: smooth;
+}
+
+:root {
+    --bg-color: #fef9f9;
+    --text-color: #333;
+    --card-color: #ffffff;
+    --shadow: rgba(0, 0, 0, 0.1);
+}
+
+body.dark {
+    --bg-color: #1e1e2f;
+    --text-color: #f5f5f5;
+    --card-color: #292944;
+    --shadow: rgba(255, 255, 255, 0.05);
+}
+
+body {
+    font-family: "Poppins", 'Segoe UI', sans-serif;
+    background: var(--bg-color);
+    color: var(--text-color);
+    transition: background 0.3s ease, color 0.3s ease;
+    padding: 20px;
+    line-height: 1.6;
+}
+
+/* Headings */
+h1, h2, h3 {
+    text-align: center;
+    margin-bottom: 1rem;
+}
+
+/* Paragraphs and Lists */
+p, li {
+    margin-bottom: 1rem;
+}
+
+ul {
+    list-style: none;
+    padding: 0;
+    text-align: center;
+}
+
+/* Blockquote */
+blockquote {
+    font-style: italic;
+    margin-top: 0.5rem;
+    text-align: center;
+    line-height: 2;
+}
+
+/* Sections */
+section {
+    text-align: center;
+}
+
+/* Buttons */
+button {
+    padding: 0.625rem 1rem;
+    border: none;
+    border-radius: 10px;
+    background-color: #ff7eb9;
+    color: white;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background 0.2s ease;
+}
+
+button:hover {
+    background-color: #ff4f9a;
+}
+
+button:focus,
+input:focus,
+textarea:focus {
+    outline: 2px solid #ff7eb9;
+    outline-offset: 2px;
+}
+
+/* Theme Toggle */
+.toggle-theme {
+    position: fixed;
+    top: 10px;
+    right: 10px;
+    font-size: 1.3rem;
+    background: none;
+    border: none;
+    cursor: pointer;
+    color: var(--text-color);
+}
+
+/* Input Section */
+.input-section {
+    max-width: 400px;
+    margin: 2rem auto;
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+    padding: 1rem;
+}
+
+input,
+textarea {
+    padding: 0.625rem;
+    border-radius: 10px;
+    border: 1px solid #ccc;
+    font-size: 1rem;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+/* Cards */
+.cards-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 1.5rem;
+    margin: 2rem 0;
+}
+
+.card-container {
+    perspective: 1000px;
+    width: 300px;
+    height: 200px;
+    margin: 30px auto;
+    cursor: pointer;
+}
+
+.card {
+    width: 100%;
+    height: 100%;
+    position: relative;
+    transform-style: preserve-3d;
+    transition: transform 0.8s ease;
+    background: transparent;
+}
+
+.card-inner {
+    position: relative;
+    width: 100%;
+    height: 250px;
+    transform-style: preserve-3d;
+    transition: transform 0.6s ease-in-out;
+    cursor: pointer;
+}
+
+.card:hover .card-inner {
+    transform: rotateY(180deg);
+}
+
+.card-front,
+.card-back {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    backface-visibility: hidden;
+    background: var(--card-color);
+    color: var(--text-color);
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 1rem;
+    box-shadow: 0 4px 20px var(--shadow);
+    text-align: center;
+}
+
+.card-back {
+    transform: rotateY(180deg);
+}
+
+/* Dark mode card face */
+body.dark .card-face {
+    background: rgba(50, 50, 50, 0.5);
+    color: white;
+}
+
+/* Actions on custom card */
+.actions {
+    text-align: center;
+    margin-top: 10px;
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    flex-wrap: wrap;
+}
+
+
+.actions button {
+    margin: 0 5px;
+}
+
+/* Footer */
+footer {
+    text-align: center;
+    padding: 1.5rem;
+    margin-top: 2rem;
+    box-shadow: 0 -2px 10px var(--shadow);
+    font-size: 0.9rem;
+    color: gray;
+}
+
+/* Mood Section */
+.mood-grid {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 0.75rem;
+    margin-bottom: 2rem;
+}
+
+.mood-button {
+    font-size: 1rem;
+    padding: 0.75rem 1.25rem;
+}
+
+/* Mood Selector Section Styling (Optional Block) */
+.mood-selector {
+    margin-top: 40px;
+    background-color: #e5f5f7;
+    padding: 2rem;
+    border-radius: 20px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+}
+/* Responsive Design */
+
+/* Small screens: phones (up to 600px) */
+@media (max-width: 600px) {
+    html {
+        font-size: 14px;
+    }
+
+    body {
+        padding: 1rem;
+    }
+
+    .cards-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .input-section {
+        padding: 1rem;
+        margin: 1rem auto;
+    }
+
+    .card-container {
+        width: 100%;
+        height: auto;
+    }
+
+    .card-inner {
+        height: 200px;
+    }
+
+    .toggle-theme {
+        font-size: 1.2rem;
+        top: 8px;
+        right: 8px;
+    }
+
+    .mood-grid {
+        flex-direction: column;
+        gap: 0.5rem;
+    }
+
+    .mood-button {
+        width: 100%;
+    }
+
+    .card-front,
+    .card-back {
+        padding: 0.75rem;
+        font-size: 0.95rem;
+    }
+
+    footer {
+        font-size: 0.75rem;
+        padding: 1rem;
+    }
+}
+
+/* Medium screens: tablets (601px - 900px) */
+@media (min-width: 601px) and (max-width: 900px) {
+    .cards-grid {
+        grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    }
+
+    .input-section {
+        max-width: 90%;
+    }
+
+    .card-inner {
+        height: 220px;
+    }
+}
+
+/* Large screens: laptops/desktops (900px+) */
+@media (min-width: 901px) {
+    .cards-grid {
+        grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    }
+
+    .input-section {
+        max-width: 400px;
+    }
+}
+/* Mood-specific card colors */
+
+.card-happy .card-front {
+    background: #fff8c4; /* soft yellow */
+    color: #333;
+}
+
+.card-happy .card-back {
+    background: #ffe86c;
+    color: #111;
+}
+
+.card-anxious .card-front {
+    background: #ffe5e5; /* soft red */
+    color: #600;
+}
+
+.card-anxious .card-back {
+    background: #ff9999;
+    color: #111;
+}
+
+.card-calm .card-front {
+    background: #e6fff5; /* soft mint */
+    color: #004d40;
+}
+
+.card-calm .card-back {
+    background: #b2f2e9;
+    color: #004d40;
+}
+
+.card-lazy .card-front {
+    background: #f0f0f0; /* soft gray */
+    color: #333;
+}
+
+.card-lazy .card-back {
+    background: #ccc;
+    color: #111;
+}
+
+.card-grateful .card-front {
+    background: #fff3cd; /* warm gold */
+    color: #856404;
+}
+
+.card-grateful .card-back {
+    background: #ffe8a1;
+    color: #5c3d00;
+}
+
+.card-muted .card-front {
+    background: #e0e0e0;
+    color: #333;
+}
+
+.card-muted .card-back {
+    background: #bbbbbb;
+    color: #111;
+}
+
+.card-help .card-front {
+    background: #fce4ec; /* soft pink */
+    color: #880e4f;
+}
+
+.card-help .card-back {
+    background: #f8bbd0;
+    color: #880e4f;
+}
+/* Popup Modal */
+
+.popup.hidden {
+    display: none;
+}
+
+.popup-content {
+    background: var(--card-color);
+    padding: 2rem;
+    border-radius: 10px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+    max-width: 400px;
+    width: 90%;
+    text-align: center;
+    color: var(--text-color);
+}
+
+.popup-content .close {
+    position: absolute;
+    top: 20px;
+    right: 25px;
+    font-size: 1.5rem;
+    cursor: pointer;
+}
+.flipped {
+    transform: rotateY(180deg);
+}
+.popup {
+    position: fixed;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: #ff7eb9;
+    color: white;
+    padding: 1rem 2rem;
+    border-radius: 10px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+    z-index: 9999;
+    font-weight: bold;
+    transition: opacity 0.3s ease;
+}
